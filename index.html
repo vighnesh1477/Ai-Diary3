@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- First-Time Setup Section -->
+    <div id="setup-section">
+        <h1>Welcome to Diary App</h1>
+        <p>Please allow microphone access for voice typing:</p>
+        <button onclick="requestMicrophonePermission()">Allow Microphone</button>
+        <div id="setup-credentials" style="display: none;">
+            <p>Set a 4-digit password and enable fingerprint access:</p>
+            <input type="password" id="password" maxlength="4" placeholder="Enter 4-digit password">
+            <button onclick="saveCredentials()">Save & Enable Fingerprint</button>
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <div id="login-section" style="display: none;">
+        <h1>Login</h1>
+        <input type="password" id="login-password" maxlength="4" placeholder="Enter your password">
+        <button onclick="authenticate()">Login</button>
+        <p id="login-error" style="display: none; color: red;">Incorrect password. Please try again.</p>
+    </div>
+
+    <!-- Main Menu Section -->
+    <div id="menu-section" style="display: none;">
+        <h1>Main Menu</h1>
+        <button onclick="openTodayDiary()">Today’s Diary</button>
+        <button onclick="openPastDiary()">Past Diary</button>
+    </div>
+
+    <!-- Today's Diary Section -->
+    <div id="today-diary" style="display: none;">
+        <h1>Today’s Diary</h1>
+        <textarea id="diary-text" placeholder="Write or voice type your diary entry..."></textarea>
+        <div id="voice-controls">
+            <button id="start-voice-btn" onclick="startVoiceTyping()">Start Voice Typing</button>
+            <button id="pause-resume-btn" onclick="pauseResumeVoiceTyping()" style="display: none;">Pause</button>
+            <button id="stop-voice-btn" onclick="stopVoiceTyping()" style="display: none;">Stop</button>
+        </div>
+        <button onclick="saveDiary()">Save Entry</button>
+        <button onclick="goToMenu()">Back to Menu</button>
+    </div>
+
+    <!-- Past Diary Section -->
+    <div id="past-diary" style="display: none;">
+        <h1>Past Diary</h1>
+        <div id="past-entries"></div>
+        <button onclick="goToMenu()">Back to Menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
